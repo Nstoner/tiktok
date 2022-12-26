@@ -3,61 +3,64 @@ const currentTime = new Date();
 
 const hours = currentTime.getHours();
 const minutes = currentTime.getMinutes();
-const horusText = hours.toString();
-const minutesText = minutes.toString();
+const horusText = hours < 10?"0" + hours.toString():hours;
+const minutesText = minutes < 10?"0" + minutes.toString():minutes;
 
 hourAndMinutes.textContent = horusText + ":" + minutesText;
 
-const videoTag = document.getElementsByClassName("videoTag")[0];
+const videoTag = document.querySelectorAll(".videoTag");
 const progressBar = document.getElementsByClassName("progress-bar")[0];
 const currentProgress = document.getElementsByClassName("current-progress")[0];
+const sliderTag = document.querySelectorAll(".slider");
 
-let duration = 0;
-videoTag.addEventListener("loadeddata", () => {
-  duration = Math.floor(videoTag.duration);
-});
 
-videoTag.addEventListener("timeupdate", () => {
-  const currentTime = Math.floor(videoTag.currentTime);
-  currentProgressBar(currentTime);
-});
-
-const currentProgressBar = (currentTime) => {
-  const currentProgressWidth = (100 / duration) * currentTime;
+const updateCurrentProgress = (currentTime) => {
+  const currentProgressWidth = (100/duration) * currentTime;
   currentProgress.style.width = currentProgressWidth.toString() + "%";
 };
 
-const homeTag = document.getElementsByClassName("home")[0];
 
-homeTag.addEventListener("click", () => {
-  if (homeTag.classList.contains("active")) {
-    homeTag.classList.remove("active");
-    videoTag.pause();
-  } else {
-    homeTag.classList.add("active");
-    videoTag.play();
+let duration = 0;
+videoTag.forEach((video) => video.addEventListener("loadeddeta", () => {
+  duration = Math.floor(video.duration);
+}))
+
+videoTag.forEach((video) => video.addEventListener("timeupdate", () => {
+  const currentTime = Math.floor(videoTag.currentTime);
+  updateCurrentProgress(currentTime);
+}))
+
+
+
+
+
+
+
+const handleClick = (video) => {
+  videoTag.forEach((ev) => ev.pause())
+  if (video.target.classList.contains("active")) {
+    video.target.classList.remove("active");
+    
+    videoTag.forEach((ve) => ve.pause ())
+  }else {
+    video.target.classList.add("active");
+    video.target.play()
   }
-});
+  
+}
 
-var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 1,
-  spaceBetween: 10,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  breakpoints: {
-    640: {
-      slidesPerView: 2,
-      spaceBetween: 20,
-    },
-    768: {
-      slidesPerView: 4,
-      spaceBetween: 40,
-    },
-    1024: {
-      slidesPerView: 5,
-      spaceBetween: 50,
-    },
-  },
-});
+sliderTag.forEach((slider) => slider.addEventListener("click", handleClick));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
