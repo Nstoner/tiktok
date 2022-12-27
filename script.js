@@ -12,12 +12,9 @@ const videoTag = document.querySelectorAll(".videoTag");
 const progressBar = document.getElementsByClassName("progress-bar")[0];
 const currentProgress = document.getElementsByClassName("current-progress")[0];
 const sliderTag = document.querySelectorAll(".slider");
+const homeContainer = document.getElementsByClassName("home-container")[0];
 
 
-const updateCurrentProgress = (currentTime) => {
-  const currentProgressWidth = (100/duration) * currentTime;
-  currentProgress.style.width = currentProgressWidth.toString() + "%";
-};
 
 
 let duration = 0;
@@ -30,10 +27,13 @@ videoTag.forEach((video) => video.addEventListener("timeupdate", () => {
   updateCurrentProgress(currentTime);
 }))
 
+const updateCurrentProgress = (currentTime) => {
+  const currentProgressWidth = (100/duration) * currentTime;
+  currentProgress.style.width = currentProgressWidth.toString() + "%";
+};
 
 
-
-
+  
 
 
 const handleClick = (video) => {
@@ -51,7 +51,10 @@ const handleClick = (video) => {
 
 sliderTag.forEach((slider) => slider.addEventListener("click", handleClick));
 
-
+homeContainer.addEventListener("scroll", (video) => {
+  videoTag.forEach((v) => v.pause());
+  
+})
 
 
 

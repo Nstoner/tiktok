@@ -59,14 +59,17 @@ a {
 .home {
   cursor: pointer;
   position: relative;
-  height: 100vh;
-  width: 400px;
+  min-height: 90vh;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .home .home-container {
   position: relative;
   width: 100%;
-  height: 90%;
+  height: 90vh;
   scroll-snap-type: y mandatory;
 }
 
@@ -86,10 +89,10 @@ a {
 .home .home-container .slider video {
   width: 100%;
   height: 100%;
-  transform: scaleX(1.18);
+  
 }
 
-.home .home-container .contact {
+.home .home-container .slider .contact {
   max-width: 240px;
   position: absolute;
   bottom: 0;
@@ -97,30 +100,31 @@ a {
   padding-left: 20px;
 }
 
-.home .home-container .contact h1 {
+.home .home-container .slider .contact h1 {
   font-size: 20px;
 }
 
-.home .home-container .contact p {
+.home .home-container .slider .contact p {
   font-size: 16px;
   font-weight: 200;
 }
 
-.home .home-container .contact span {
+.home .home-container .slider .contact span {
   font-size: 12px;
 }
 
-.home .home-container ul {
+.home .home-container .slider ul {
   position: absolute;
-  right: 10px;
   bottom: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin-bottom: 20px;
+  margin-right: 20px;
 }
 
-.home .home-container ul .image {
+.home .home-container .slider ul .image {
   width: 40px;
   border-radius: 50%;
   overflow: hidden;
@@ -137,11 +141,11 @@ a {
   text-align: center;
 }
 
-.home .home-container ul li i {
+.home .home-container .slider ul li i {
   margin-bottom: 5px;
 }
 
-.home .home-container ul li span {
+.home .home-container .slider ul li span {
   font-size: 14px;
 }
 
@@ -209,8 +213,6 @@ a {
 @media (min-width: 500px) {
   body {
     max-width: 400px;
-    
   }
-
   
 }
